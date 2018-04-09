@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="twitchTv">
+  <head>
+    <base href="/" >
+    <title>Twitch TV</title>
+    <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="app/lib/angular.min.js"></script>
+    <script src="app/app.js"></script>
+  </head>
+  <!--<ng-include src="'header.html'"></ng-include>-->
+  <body>
+
+    <div class="content" ng-controller="TvController">
+
+      <h1>TWITCH STREAMERS</h1>
+      <input type="text" ng-model="search">
+
+
+  <!--  <button ng-click=" order = 'name'">Order by name</button>
+    <button ng-click=" order = 'belt'">Order by belt</button> -->
+
+    <!--<a ng-href="{{(sample[0]).stream.url}}">{{(sample[0]).stream.name}}</a>
+    <p>{{(sample[0]).stream.name}}</p>
+    <p>{{(sample[0]).stream.status}}</p>
+    <p>{{(sample[0]).stream.logo}}</p>
+    <img ng-src="{{(sample[0]).stream.logo}}" alt="">-->
+
+    <ul>
+      <li ng-repeat = "el in sample | orderBy:'stream.status' | filter:search" ng-show="el.stream != null ">
+        <span><img ng-src="{{el.stream.logo}}" alt=""></span>
+        <h3><a target="_blank" ng-href="{{el.stream.url}}">{{el.stream.name}}</a></h3>
+        <h4>{{el.stream.status}}</h4>
+      </li>
+    </ul>
+
+    </div>
+
+
+  </body>
+</html>
